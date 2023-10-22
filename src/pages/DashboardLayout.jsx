@@ -3,21 +3,52 @@ import styled from "styled-components";
 import SmallSidebar from "../components/SmallSidebar.jsx";
 import BigSidebar from "../components/BigSidebar.jsx";
 import Navbar from "../components/Navbar.jsx";
+import { createContext, useContext, useState } from "react";
+
+const DashboardContext = createContext();
 
 const DashboardLayout = () => {
+  // temp
+  const user = { name: "Rob" };
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const toggleDarkTheme = () => {
+    console.log("toggle dark theme");
+  };
+
+  const toggleSideBar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
+  const logoutUser = async () => {
+    console.log("logout user");
+  };
+
   return (
-    <Wrapper>
-      <main className="dashboard">
-        <SmallSidebar />
-        <BigSidebar />
-        <div>
-          <Navbar />
-          <div className="dashboard-page">
-            <Outlet />
+    <DashboardContext.Provider
+      value={{
+        user,
+        showSidebar,
+        isDarkTheme,
+        toggleDarkTheme,
+        toggleSideBar,
+        logoutUser,
+      }}
+    >
+      <Wrapper>
+        <main className="dashboard">
+          <SmallSidebar />
+          <BigSidebar />
+          <div>
+            <Navbar />
+            <div className="dashboard-page">
+              <Outlet />
+            </div>
           </div>
-        </div>
-      </main>
-    </Wrapper>
+        </main>
+      </Wrapper>
+    </DashboardContext.Provider>
   );
 };
 
@@ -43,5 +74,7 @@ const Wrapper = styled.section`
     }
   }
 `;
+
+export const useDashboardContext = () => useContext(DashboardContext);
 
 export default DashboardLayout;
