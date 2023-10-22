@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../components/Logo.jsx";
+import FormRow from "../components/FormRow.jsx";
 
 const Register = () => {
   return (
@@ -8,19 +9,12 @@ const Register = () => {
       <form className="form">
         <Logo />
         <h4>Register</h4>
-        <div className="form-row">
-          <label htmlFor="name" className="form-label">
-            name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className="form-input"
-            defaultValue="rob"
-            required
-          />
-        </div>
+        <FormRow type="text" name="name" />
+        <FormRow type="text" name="lastName" labelText="last name" />
+        <FormRow type="text" name="location" />
+        <FormRow type="email" name="email" />
+        <FormRow type="password" name="password" />
+
         <button type="submit" className="btn btn-block">
           submit
         </button>
