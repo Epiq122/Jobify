@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+const Navbar = () => {
+  return <Wrapper>Navbar</Wrapper>;
+};
 
 const Wrapper = styled.nav`
   height: var(--nav-height);
@@ -7,12 +11,14 @@ const Wrapper = styled.nav`
   justify-content: center;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
   background: var(--background-secondary-color);
+
   .nav-center {
     display: flex;
     width: 90vw;
     align-items: center;
     justify-content: space-between;
   }
+
   .toggle-btn {
     background: transparent;
     border-color: transparent;
@@ -22,30 +28,36 @@ const Wrapper = styled.nav`
     display: flex;
     align-items: center;
   }
+
   .logo-text {
     display: none;
   }
+
   .logo {
     display: flex;
     align-items: center;
     width: 100px;
   }
+
   .btn-container {
     display: flex;
     align-items: center;
   }
+
   @media (min-width: 992px) {
     position: sticky;
     top: 0;
     .nav-center {
       width: 90%;
     }
+
     .logo {
       display: none;
     }
+
     .logo-text {
       display: block;
     }
   }
 `;
-export default Wrapper;
+export default Navbar;
