@@ -1,7 +1,24 @@
 import styled from "styled-components";
+import { FaAlignLeft } from "react-icons/fa";
+import { useDashboardContext } from "../pages/DashboardLayout.jsx";
+import Logo from "./Logo.jsx";
 
 const Navbar = () => {
-  return <Wrapper>Navbar</Wrapper>;
+  const { toggleSideBar } = useDashboardContext();
+  return (
+    <Wrapper>
+      <div className="nav-center">
+        <button type="button" className="toggle-btn" onClick={toggleSideBar}>
+          <FaAlignLeft />
+        </button>
+        <div>
+          <Logo />
+          <h4 className="logo-text">dashboard</h4>
+        </div>
+        <div className="btn-container">toggle/logout</div>
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.nav`
